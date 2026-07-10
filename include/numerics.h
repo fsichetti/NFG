@@ -1575,6 +1575,7 @@ inline bool interval_number::isPositive() const { return (min_low < 0); }
 inline void interval_number::negate() { std::swap(min_low, high); }
 
 inline bool interval_number::operator<(const double b) const { return (high < b); }
+inline bool interval_number::operator<=(const double b) const { return (high <= b); }
 
 inline interval_number& interval_number::operator=(const interval_number& b) { min_low = b.min_low; high = b.high; return *this; }
 
@@ -1604,6 +1605,7 @@ inline interval_number max(const interval_number& a, const interval_number& b) {
 }
 
 inline bool interval_number::operator>(const double b) const { return (min_low < -b); }
+inline bool interval_number::operator>=(const double b) const { return (min_low <= -b); }
 inline bool interval_number::operator==(const double b) const { return (high == b && min_low == -b); }
 
 inline int interval_number::sign() const { return (isNegative()) ? (-1) : (1); } // Zero is not accounted for
